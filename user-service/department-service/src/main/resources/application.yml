@@ -1,0 +1,27 @@
+server:
+  port: 9001  # Port for department service
+
+spring:
+  application:
+    name: DEPARTMENT-SERVICE # Name of the department service
+
+  cloud:
+    consul:
+      host: localhost  # Consul server host
+      port: 8500  # Consul server port
+      discovery:
+        enabled: true  # Enable service discovery with Consul
+        register: true  # Register this service with Consul
+        prefer-ip-address: true  # Prefer using IP addresses instead of hostnames
+        health-check-path: /actuator/health  # Health check path for the service
+        health-check-interval: 10s  # Frequency of health checks
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG
